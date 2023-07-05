@@ -1,4 +1,7 @@
 import { serverEndpoints } from "./src/server";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const server = serverEndpoints();
 
