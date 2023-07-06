@@ -26,7 +26,8 @@ server.use((req, res, next) => {
 server.use(express.json());
 
 const serverEndpoints = () => {
-  server.post("/auth", userController.save);
+  server.get("/user/:id", userController.index);
+  server.post("/register", userController.save);
 
   return server;
 };
