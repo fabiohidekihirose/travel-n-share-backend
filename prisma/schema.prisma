@@ -16,23 +16,23 @@ model user_account {
   username  String
   email     String   @unique
   image     String
-  Post      post[]
-  following follow[] @relation(name: "following")
-  followers follow[] @relation(name: "follower")
+  posts     post[]
+  following follow[] @relation(name: "follower")
+  followers follow[] @relation(name: "following")
 }
 
 model post {
   id      Int          @id @default(autoincrement())
   user_id String
-  user    user_account @relation(fields: [user_id], references: [id])
+  user    user_account @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
   content String
 }
 
 model follow {
   user_id_ed String
-  user_ed    user_account @relation(fields: [user_id_ed], references: [id], name: "following")
+  user_ed    user_account @relation(fields: [user_id_ed], references: [id], name: "following", onDelete: Cascade, onUpdate: Cascade)
   user_id_er String
-  user_er    user_account @relation(fields: [user_id_er], references: [id], name: "follower")
+  user_er    user_account @relation(fields: [user_id_er], references: [id], name: "follower", onDelete: Cascade, onUpdate: Cascade)
 
   @@id([user_id_ed, user_id_er])
 }
