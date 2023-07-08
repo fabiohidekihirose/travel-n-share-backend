@@ -1,6 +1,7 @@
 import express, { Express } from "express";
 import * as userController from "./user/user.controller";
 import * as followController from "./follow/follow.controller";
+import * as postController from "./post/post.controller";
 import cors from "cors";
 
 const server: Express = express();
@@ -32,6 +33,9 @@ const serverEndpoints = () => {
 
   server.get("/user/:id/followers", followController.followers);
   server.get("/user/:id/following", followController.following);
+
+  server.get("/user/:id/posts", postController.index);
+
   return server;
 };
 
