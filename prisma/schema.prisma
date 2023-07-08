@@ -11,21 +11,23 @@ datasource db {
 }
 
 model user_account {
-  id        String   @id
+  id        String     @id
   full_name String
   username  String
-  email     String   @unique
+  email     String     @unique
   image     String
   posts     post[]
-  following follow[] @relation(name: "follower")
-  followers follow[] @relation(name: "following")
+  following follow[]   @relation(name: "follower")
+  followers follow[]   @relation(name: "following")
+  favorite  favorite[]
 }
 
 model post {
-  id      Int          @id @default(autoincrement())
-  user_id String
-  user    user_account @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  content String
+  id       Int          @id @default(autoincrement())
+  user_id  String
+  user     user_account @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  content  String
+  favorite favorite[]
 }
 
 model follow {
@@ -35,4 +37,12 @@ model follow {
   user_er    user_account @relation(fields: [user_id_er], references: [id], name: "follower", onDelete: Cascade, onUpdate: Cascade)
 
   @@id([user_id_ed, user_id_er])
+}
+
+model favorite {
+  id      Int          @id @default(autoincrement())
+  user_id String
+  user    user_account @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  post_id Int
+  post    post         @relation(fields: [post_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }

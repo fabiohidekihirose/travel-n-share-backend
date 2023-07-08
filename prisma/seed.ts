@@ -1,6 +1,7 @@
 import { db } from "../src/utils/db.server";
 
 async function seed() {
+  await db.favorite.deleteMany({});
   await db.follow.deleteMany({});
   await db.post.deleteMany({});
   await db.user_account.deleteMany({});
@@ -37,6 +38,18 @@ async function seed() {
         data: {
           user_id_ed: follow.user_id_ed,
           user_id_er: follow.user_id_er,
+        },
+      });
+    })
+  );
+
+  await Promise.all(
+    getFavorites().map((favorite) => {
+      return db.favorite.create({
+        data: {
+          id: favorite.id,
+          user_id: favorite.user_id,
+          post_id: favorite.post_id,
         },
       });
     })
@@ -101,6 +114,21 @@ function getFollows() {
     {
       user_id_ed: "MZWDsVGmqGfPGJYKTNdqazx9AiU5",
       user_id_er: "DZWDsVGmqGfPGJYKTNdqazx9AiU2",
+    },
+  ];
+}
+
+function getFavorites() {
+  return [
+    {
+      id: -1,
+      user_id: "RZWDsVGmqGfPGJYKTNdqazx9Aiiu",
+      post_id: -1,
+    },
+    {
+      id: -2,
+      user_id: "MZWDsVGmqGfPGJYKTNdqazx9AiU5",
+      post_id: -1,
     },
   ];
 }
