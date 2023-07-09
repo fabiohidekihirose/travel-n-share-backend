@@ -8,10 +8,10 @@ interface User {
   image: string;
 }
 
-export async function getUser(id: string) {
+export async function getUser(uid: string) {
   return db.user_account.findUnique({
     where: {
-      id: id,
+      id: uid,
     },
     select: {
       id: true,

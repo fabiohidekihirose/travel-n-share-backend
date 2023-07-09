@@ -3,8 +3,8 @@ import * as userModel from "./user.model";
 
 export async function index(req: Request, res: Response) {
   try {
-    const userId = req.params.id;
-    const user = await userModel.getUser(userId);
+    const { uid } = req.params;
+    const user = await userModel.getUser(uid);
 
     res.status(200).send(user);
   } catch (error: any) {

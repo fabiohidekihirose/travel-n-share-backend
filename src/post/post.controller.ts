@@ -3,7 +3,7 @@ import * as PostModel from "./post.model";
 
 export async function index(req: Request, res: Response) {
   try {
-    const { uid } = req.body;
+    const { uid } = req.params;
     const myPosts = await PostModel.getMyPosts(uid);
 
     res.status(200).send(myPosts);
