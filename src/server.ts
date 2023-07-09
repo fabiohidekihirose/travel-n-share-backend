@@ -2,6 +2,7 @@ import express, { Express } from "express";
 import * as userController from "./user/user.controller";
 import * as followController from "./follow/follow.controller";
 import * as postController from "./post/post.controller";
+import * as favoriteController from "./favorite/favorite.controller";
 import cors from "cors";
 
 const server: Express = express();
@@ -28,13 +29,15 @@ server.use((req, res, next) => {
 server.use(express.json());
 
 const serverEndpoints = () => {
-  server.get("/user/:id", userController.index);
+  server.get("/user/:uid", userController.index);
   server.post("/register", userController.save);
 
-  server.get("/user/:id/followers", followController.followers);
-  server.get("/user/:id/following", followController.following);
+  server.get("/user/:uid/followers", followController.followers);
+  server.get("/user/:uid/following", followController.following);
 
-  server.get("/user/:id/posts", postController.index);
+  server.get("/user/:uid/posts", postController.index);
+
+  server.get("/user/:uid/favorite", favoriteController.index);
 
   return server;
 };
