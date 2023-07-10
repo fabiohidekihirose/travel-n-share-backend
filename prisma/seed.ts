@@ -47,7 +47,6 @@ async function seed() {
     getFavorites().map((favorite) => {
       return db.favorite.create({
         data: {
-          id: favorite.id,
           user_id: favorite.user_id,
           post_id: favorite.post_id,
         },
@@ -181,27 +180,22 @@ function getFollows() {
 function getFavorites() {
   return [
     {
-      id: -1,
       user_id: "RZWDsVGmqGfPGJYKTNdqazx9Aiiu",
       post_id: -1,
     },
     {
-      id: -2,
       user_id: "MZWDsVGmqGfPGJYKTNdqazx9AiU5",
       post_id: -1,
     },
     {
-      id: -3,
       user_id: "DZWDsVGmqGfPGJYKTNdqazx9AiU2",
       post_id: -3,
     },
     {
-      id: -4,
       user_id: "DZWDsVGmqGfPGJYKTNdqazx9AiU2",
       post_id: -4,
     },
     {
-      id: -5,
       user_id: "DZWDsVGmqGfPGJYKTNdqazx9AiU2",
       post_id: -5,
     },
