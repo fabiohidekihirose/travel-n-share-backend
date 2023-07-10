@@ -34,14 +34,18 @@ const serverEndpoints = () => {
 
   server.get("/user/:uid/followers", followController.followers);
   server.get("/user/:uid/following", followController.following);
+  server.post("/user/:uid/following/create", followController.save);
+  server.delete(
+    "/user/:uid/following/:user_id_ed/delete",
+    followController.remove
+  );
 
   server.get("/user/:uid/posts", postController.index);
 
   server.get("/user/:uid/favorite", favoriteController.index);
-  server.get("/favorite/check", favoriteController.view);
-  server.post("/favorite/create", favoriteController.save);
+  server.post("/user/:uid/favorite/create", favoriteController.save);
   server.delete(
-    "/favorite/:post_id/:user_id/delete",
+    "/user/:uid/favorite/:post_id/delete",
     favoriteController.remove
   );
 

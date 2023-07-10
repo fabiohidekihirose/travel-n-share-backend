@@ -174,6 +174,14 @@ function getFollows() {
       user_id_ed: "MZWDsVGmqGfPGJYKTNdqazx9AiU5",
       user_id_er: "DZWDsVGmqGfPGJYKTNdqazx9AiU2",
     },
+    {
+      user_id_ed: "DZWDsVGmqGfPGJYKTNdqazx9AiU2",
+      user_id_er: "1jdDsVGmqGfPGJYKTNdqazx9Aiir",
+    },
+    {
+      user_id_ed: "DZWDsVGmqGfPGJYKTNdqazx9AiU2",
+      user_id_er: "gsWDsVGmqGfPGJYKTNdqazx9Aii3",
+    },
   ];
 }
 
