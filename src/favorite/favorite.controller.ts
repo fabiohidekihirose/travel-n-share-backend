@@ -12,16 +12,6 @@ export async function index(req: Request, res: Response) {
   }
 }
 
-export async function view(req: Request, res: Response) {
-  try {
-    const { post_id, user_id } = req.body;
-
-    await favoriteModel.getFavPost(parseInt(post_id), user_id);
-  } catch (error: any) {
-    res.status(500).send(error.message);
-  }
-}
-
 export async function save(req: Request, res: Response) {
   try {
     const payload = req.body;
@@ -35,10 +25,8 @@ export async function save(req: Request, res: Response) {
 
 export async function remove(req: Request, res: Response) {
   try {
-    const { post_id, user_id } = req.params;
-    console.log("Here");
-
-    await favoriteModel.deleteFavorite(parseInt(post_id), user_id);
+    const { post_id, uid } = req.params;
+    await favoriteModel.deleteFavorite(parseInt(post_id), uid);
 
     res.status(200);
   } catch (error: any) {

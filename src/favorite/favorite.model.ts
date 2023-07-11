@@ -28,28 +28,17 @@ export async function getFavPostsByUser(uid: string) {
   });
 }
 
-export async function getFavPost(post_id: number, user_id: string) {
-  return db.favorite.findUnique({
-    where: {
-      user_id_post_id: {
-        user_id,
-        post_id,
-      },
-    },
-  });
-}
-
 export async function createFavorite(payload: FavoriteProps) {
   return db.favorite.create({
     data: payload,
   });
 }
 
-export async function deleteFavorite(post_id: number, user_id: string) {
+export async function deleteFavorite(post_id: number, uid: string) {
   return db.favorite.delete({
     where: {
       user_id_post_id: {
-        user_id,
+        user_id: uid,
         post_id,
       },
     },
