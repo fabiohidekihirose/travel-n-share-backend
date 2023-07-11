@@ -41,6 +41,8 @@ const serverEndpoints = () => {
   );
 
   server.get("/user/:uid/posts", postController.index);
+  server.post("/user/:uid/posts/create", postController.save);
+  server.delete("/user/:uid/posts/:post_id/delete", postController.remove);
 
   server.get("/user/:uid/favorite", favoriteController.index);
   server.post("/user/:uid/favorite/create", favoriteController.save);
