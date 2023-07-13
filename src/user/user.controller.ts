@@ -14,13 +14,14 @@ export async function index(req: Request, res: Response) {
 
 export async function save(req: Request, res: Response) {
   try {
-    const { id, full_name, username, email, image } = req.body;
+    const { id, full_name, username, email, image, bio } = req.body;
 
     const user = await userModel.create({
       id,
       full_name,
       username,
       email,
+      bio,
       image,
     });
 

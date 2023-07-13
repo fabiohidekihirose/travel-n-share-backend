@@ -5,6 +5,7 @@ interface User {
   email: string;
   username: string;
   full_name: string;
+  bio: string;
   image: string;
 }
 
@@ -19,6 +20,7 @@ export async function getUser(uid: string) {
       full_name: true,
       username: true,
       image: true,
+      bio: true,
       posts: true,
       followers: true,
       following: true,
