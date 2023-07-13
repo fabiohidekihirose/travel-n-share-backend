@@ -3,9 +3,10 @@ import { db } from "../utils/db.server";
 interface PostProps {
   user_id: string;
   content: string;
+  timestamp: string;
 }
 
-export async function getMyPosts(uid: string) {
+export async function getPosts(uid: string) {
   return db.post.findMany({
     where: {
       user_id: uid,
@@ -21,6 +22,7 @@ export async function getMyPosts(uid: string) {
       },
       content: true,
       favorite: true,
+      timestamp: true,
     },
   });
 }
@@ -35,6 +37,27 @@ export async function deletePost(post_id: number) {
   return db.post.delete({
     where: {
       id: post_id,
+    },
+  });
+}
+
+export async function getFeed(id_list: []) {
+  return db.post.findMany({
+    where: {
+      user_id: {
+        in: id_list,
+      },
+    },
+    orderBy: {
+      timestamp: "desc",
+    },
+    select: {
+      id: true,
+      content: true,
+      user_id: true,
+      timestamp: true,
+      favorite: true,
+      user: true,
     },
   });
 }

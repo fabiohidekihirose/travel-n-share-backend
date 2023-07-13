@@ -17,6 +17,7 @@ export async function getFavPostsByUser(uid: string) {
           content: true,
           user: {
             select: {
+              id: true,
               username: true,
               image: true,
             },
