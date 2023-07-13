@@ -28,7 +28,7 @@ model post {
   user_id   String
   user      user_account @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
   content   String
-  timestamp DateTime     @default(now())
+  timestamp DateTime
   favorite  favorite[]
 }
 
