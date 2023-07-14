@@ -30,3 +30,16 @@ export async function save(req: Request, res: Response) {
     res.status(500).send(error.message);
   }
 }
+
+export async function update(req: Request, res: Response) {
+  try {
+    const payload = req.body;
+    const { uid } = req.params;
+
+    await userModel.update(payload, uid);
+
+    res.status(200).send("");
+  } catch (error: any) {
+    res.status(500).send(error.message);
+  }
+}

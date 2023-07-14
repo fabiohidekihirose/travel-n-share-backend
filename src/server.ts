@@ -31,6 +31,7 @@ server.use(express.json());
 const serverEndpoints = () => {
   server.get("/user/:uid", userController.index);
   server.post("/register", userController.save);
+  server.patch("/user/:uid/update", userController.update);
 
   server.get("/user/:uid/followers", followController.followers);
   server.get("/user/:uid/following", followController.following);

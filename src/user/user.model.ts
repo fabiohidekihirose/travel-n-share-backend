@@ -43,3 +43,12 @@ export async function create(payload: User) {
     },
   });
 }
+
+export async function update(payload: User, uid: string) {
+  return db.user_account.update({
+    where: {
+      id: uid,
+    },
+    data: payload,
+  });
+}
