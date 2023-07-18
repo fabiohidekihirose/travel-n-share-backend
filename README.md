@@ -39,7 +39,7 @@
 
 ## About The Project
 
-[Home Decor app](https://home-decor-fabiohidekihirose.vercel.app/)
+[Travel N Share app](https://travel-n-share.vercel.app/)
 
 Travel N Share is a vibrant social network designed exclusively for adventurous travelers to connect and exchange their remarkable journeys from around the globe. Whether you're a seasoned globetrotter or a novice explorer, Travel N Share provides a platform to share and discover incredible travel experiences. You'll immerse yourself in a supportive community of like-minded travelers, fostering a sense of wanderlust and inspiration as you embark on your own unforgettable adventures.
 
