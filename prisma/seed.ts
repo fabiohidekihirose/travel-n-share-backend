@@ -3,6 +3,7 @@ import { db } from "../src/utils/db.server";
 async function seed() {
   await db.favorite.deleteMany({});
   await db.follow.deleteMany({});
+  await db.comment.deleteMany({});
   await db.post.deleteMany({});
   await db.user_account.deleteMany({});
 
@@ -29,6 +30,18 @@ async function seed() {
           user_id: post.user_id,
           content: post.content,
           timestamp: post.timestamp,
+        },
+      });
+    })
+  );
+
+  await Promise.all(
+    getComments().map((comment) => {
+      return db.comment.create({
+        data: {
+          user_id: comment.user_id,
+          post_id: comment.post_id,
+          content: comment.content,
         },
       });
     })
@@ -465,6 +478,16 @@ function getFavorites() {
     {
       user_id: "1jdDsVGmqGfPGJYKTNdqazx9Aiir",
       post_id: -10,
+    },
+  ];
+}
+
+function getComments() {
+  return [
+    {
+      user_id: "DZWDsVGmqGfPGJYKTNdqazx9AiU2",
+      post_id: -13,
+      content: "Awesome experience!",
     },
   ];
 }

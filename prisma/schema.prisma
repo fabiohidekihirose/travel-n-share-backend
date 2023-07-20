@@ -21,6 +21,7 @@ model user_account {
   following follow[]   @relation(name: "follower")
   followers follow[]   @relation(name: "following")
   favorite  favorite[]
+  comment   comment[]
 }
 
 model post {
@@ -30,6 +31,7 @@ model post {
   content   String
   timestamp DateTime
   favorite  favorite[]
+  comment   comment[]
 }
 
 model follow {
@@ -48,4 +50,13 @@ model favorite {
   post    post         @relation(fields: [post_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@id([user_id, post_id])
+}
+
+model comment {
+  id      Int          @id @default(autoincrement())
+  content String
+  user_id String
+  user    user_account @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  post_id Int
+  post    post         @relation(fields: [post_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
