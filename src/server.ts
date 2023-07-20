@@ -3,6 +3,7 @@ import * as userController from "./user/user.controller";
 import * as followController from "./follow/follow.controller";
 import * as postController from "./post/post.controller";
 import * as favoriteController from "./favorite/favorite.controller";
+import * as commentController from "./comment/comment.controller";
 import cors from "cors";
 
 const server: Express = express();
@@ -51,6 +52,11 @@ const serverEndpoints = () => {
   server.delete(
     "/user/:uid/favorite/:post_id/delete",
     favoriteController.remove
+  );
+
+  server.post(
+    "/user/:uid/post/:post_id/comment/create",
+    commentController.save
   );
 
   return server;
