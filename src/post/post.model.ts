@@ -88,3 +88,39 @@ export async function getFeed(id_list: []) {
     },
   });
 }
+
+export async function getExplore(id_list: []) {
+  return db.post.findMany({
+    where: {
+      NOT: {
+        user_id: {
+          in: id_list,
+        },
+      },
+    },
+    orderBy: {
+      timestamp: "desc",
+    },
+    select: {
+      id: true,
+      content: true,
+      user_id: true,
+      timestamp: true,
+      favorite: true,
+      user: true,
+      comment: {
+        select: {
+          id: true,
+          content: true,
+          user: {
+            select: {
+              id: true,
+              username: true,
+              image: true,
+            },
+          },
+        },
+      },
+    },
+  });
+}

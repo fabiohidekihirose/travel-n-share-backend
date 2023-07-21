@@ -44,3 +44,14 @@ export async function feed(req: Request, res: Response) {
     res.status(500).send(error.message);
   }
 }
+
+export async function explore(req: Request, res: Response) {
+  try {
+    const { id_list } = req.body;
+    const explorePosts = await postModel.getExplore(id_list);
+
+    res.status(200).send(explorePosts);
+  } catch (error: any) {
+    res.status(500).send(error.message);
+  }
+}
