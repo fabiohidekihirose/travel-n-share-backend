@@ -23,6 +23,19 @@ export async function getFavPostsByUser(uid: string) {
             },
           },
           favorite: true,
+          comment: {
+            select: {
+              id: true,
+              content: true,
+              user: {
+                select: {
+                  id: true,
+                  username: true,
+                  image: true,
+                },
+              },
+            },
+          },
         },
       },
     },

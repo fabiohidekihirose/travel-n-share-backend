@@ -17,7 +17,7 @@ export async function save(req: Request, res: Response) {
     const payload = req.body;
     await postModel.createPost(payload);
 
-    res.status(200);
+    res.status(200).send("");
   } catch (error: any) {
     res.status(500).send(error.message);
   }
@@ -28,7 +28,7 @@ export async function remove(req: Request, res: Response) {
     const { post_id } = req.params;
     await postModel.deletePost(parseInt(post_id));
 
-    res.status(200);
+    res.status(200).send("");
   } catch (error: any) {
     res.status(500).send(error.message);
   }
