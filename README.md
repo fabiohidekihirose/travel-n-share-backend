@@ -110,6 +110,8 @@ _Please note you will need to follow the steps found on [travel-n-share-frontend
 - Create a new post
 - Follow other users
 - Feed
+- Comment on posts
+- Explore section
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
